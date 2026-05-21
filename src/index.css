@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  --color-neon-yellow: #FFD600;
+  --color-cyber-black: #050507;
+  --color-cyber-gray: #0b0b0e;
+  --color-cyber-card: rgba(11, 11, 14, 0.6);
+  --color-cyber-border: rgba(255, 214, 0, 0.15);
+  
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Outfit", sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050507;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFD600;
+  border-radius: 4px;
+  border: 2px solid #050507;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e6c000;
+}
+
+/* Hide default cursor on desktop devices with pointer input */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, input, textarea, select, [role="button"], iframe, canvas {
+    cursor: none;
+  }
+}
+
+html, body {
+  background-color: #050507;
+  color: #f3f4f6;
+  font-family: "Outfit", sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: auto;
+}
+
+::selection {
+  background-color: #FFD600;
+  color: #050507;
+}
+
+/* Custom Futuristic Utilities */
+.neon-glow-text {
+  text-shadow: 0 0 10px rgba(255, 214, 0, 0.6), 0 0 20px rgba(255, 214, 0, 0.3);
+}
+
+.neon-glow-border {
+  box-shadow: 0 0 15px rgba(255, 214, 0, 0.15), inset 0 0 10px rgba(255, 214, 0, 0.05);
+  border-color: rgba(255, 214, 0, 0.3);
+}
+
+.neon-glow-border-hover:hover {
+  box-shadow: 0 0 25px rgba(255, 214, 0, 0.3), inset 0 0 15px rgba(255, 214, 0, 0.1);
+  border-color: rgba(255, 214, 0, 0.6);
+  transition: all 0.4s ease;
+}
+
+.glassmorphism {
+  background: rgba(11, 11, 14, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 214, 0, 0.1);
+}
+
+.glassmorphism-luxury {
+  background: linear-gradient(135deg, rgba(15, 15, 20, 0.7) 0%, rgba(5, 5, 7, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 214, 0, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 214, 0, 0.05);
+}
+
+/* Cyber Matrix Background and Grid Floor */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(255, 214, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 214, 0, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center;
+}
+
+.perspective-grid {
+  perspective: 400px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.grid-floor {
+  background-image: 
+    linear-gradient(rgba(255, 214, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 214, 0, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: rotateX(75deg);
+  transform-origin: top center;
+  width: 200%;
+  height: 200%;
+  margin-left: -50%;
+  animation: grid-scroll 25s linear infinite;
+}
+
+@keyframes grid-scroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000px;
+  }
+}
+
+/* CRT Scanlines and HUD overlays */
+.hud-scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.3)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.glow-yellow-radial {
+  background: radial-gradient(circle, rgba(255, 214, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.glow-yellow-point {
+  box-shadow: 0 0 10px #FFD600, 0 0 20px rgba(255, 214, 0, 0.8), 0 0 30px rgba(255, 214, 0, 0.6);
+}
+
+/* Flicker effect for Cyber UI */
+@keyframes hologram-flicker {
+  0% { opacity: 0.95; filter: hue-rotate(0deg); }
+  5% { opacity: 0.5; }
+  6% { opacity: 0.95; }
+  45% { opacity: 0.95; }
+  46% { opacity: 0.8; }
+  47% { opacity: 0.95; }
+  50% { opacity: 0.4; }
+  51% { opacity: 0.95; }
+  80% { opacity: 0.95; }
+  81% { opacity: 0.6; }
+  82% { opacity: 0.95; }
+  100% { opacity: 0.95; filter: hue-rotate(3deg); }
+}
+
+.hologram-effect {
+  animation: hologram-flicker 8s infinite steps(1);
+}
+
+/* Glitch Animation */
+@keyframes cyber-glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+  }
+  40% {
+    clip-path: inset(15% 0 80% 0);
+  }
+  60% {
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    clip-path: inset(3% 0 92% 0);
+  }
+  100% {
+    clip-path: inset(40% 0 61% 0);
+  }
+}
+
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -1px 0 #FFD600;
+  top: 0;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0,900px,0,0); 
+  animation: cyber-glitch 2s infinite linear alternate-reverse;
+}
+
+/* Lenis styles recommended */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
